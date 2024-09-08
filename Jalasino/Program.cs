@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore.Infrastructure;
+
 namespace Jalasino
 {
     internal static class Program
@@ -11,6 +13,8 @@ namespace Jalasino
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            DatabaseFacade facade = new DatabaseFacade(new DataContex());
+            facade.EnsureCreated();
             Application.Run(new Form1());
         }
 
