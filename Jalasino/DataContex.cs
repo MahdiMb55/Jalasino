@@ -16,6 +16,6 @@ namespace Jalasino
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Jalase> Jalasat { get; set; }
+        public DbSet<Meeting> Meetings { get; set; }
     }
 }
