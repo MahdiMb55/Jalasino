@@ -9,6 +9,7 @@ namespace Jalasino
         private readonly DataContex _context;
         private MainPage mainPage;
         private CreateForm createForm;
+        private AllMeetingList allMeetingList;
         private MeetingsListPage meetingsListPage;
         public MainForm()
         {
@@ -17,6 +18,7 @@ namespace Jalasino
             mainPage = new MainPage();
             meetingsListPage = new MeetingsListPage();  
             createForm = new CreateForm();
+            allMeetingList = new AllMeetingList();
             LoadPendingMeetings();
         }
 
@@ -39,7 +41,7 @@ namespace Jalasino
 
         private void btnCreateForm_Click(object sender, EventArgs e)
         {
-            ShowPage(createForm);
+            ShowPage(allMeetingList);
         }
 
         private void btnListMeetings_Click(object sender, EventArgs e)

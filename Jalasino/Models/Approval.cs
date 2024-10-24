@@ -8,18 +8,22 @@ using System.Threading.Tasks;
 
 namespace Jalasino.Models
 {
-    public class Meeting
+    public class Approval
     {
         [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Subject { get; set; } = null!;
-        
-        public string Description { get; set; } = null!;
-        
+
+        [Required]
         public DateTime Date { get; set; }
 
-        public List<Person> People { get; set; } = new List<Person>();
+        [Required]
+        public string Actioner { get; set; } = null!;
+
+        [Required]
+        public string Status { get; set; } = null!;
 
     }
 }

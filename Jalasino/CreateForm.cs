@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using Jalasino.Models;
 
 namespace Jalasino
 {
@@ -8,31 +7,62 @@ namespace Jalasino
         public CreateForm()
         {
             InitializeComponent();
+            LoadPeople();
+        }
+
+        private List<Person> _people;
+        private void LoadPeople()
+        {
+            using (var context = new DataContex())
+            {
+                // Load people from the database
+                _people = context.People.ToList();
+            }
+
+            // Add people to the checked list box
+            foreach (var person in _people)
+            {
+                chkboxlstPeople.Items.Add(person, false);
+            }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string title = txtMeetingTitle.Text;
-            string dateText = txtMeetingDate.Text;
-            string description = txtMeetingDescription.Text;
+            var meeting = new Meeting
+            {
+                Subject = txtMeetingTitle.Text,
+                Date = dtpickerMeetingDate.SelectedDateInDateTime,
+                Description = txtMeetingDescription.Text,
+                People = new List<Person>()
+            };
 
-            if (DateTime.TryParse(dateText, out DateTime date))
+            // Add selected participants to the meeting
+            foreach (Person person in chkboxlstPeople.CheckedItems)
             {
-                // Logic to save the meeting, e.g., adding it to a list or a database
-                MessageBox.Show("Meeting Created Successfully!");
-                ClearForm();
+                meeting.People.Add(person);
             }
-            else
+
+            using (var context = new DataContex())
             {
-                MessageBox.Show("Invalid date format. Please enter a valid date.");
+                context.Meetings.Add(meeting);
+                context.SaveChanges();
             }
+
+            MessageBox.Show("Meeting created successfully!");
+            ClearForm();
+
         }
 
         private void ClearForm()
         {
             txtMeetingTitle.Clear();
-            txtMeetingDate.Clear();
+            dtpickerMeetingDate.SetTodayDate(BehComponents.PersianDateTime.Now);
             txtMeetingDescription.Clear();
+        }
+
+        private void CreateForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
