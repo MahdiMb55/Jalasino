@@ -20,7 +20,8 @@ namespace Jalasino.Models
         public DateTime Date { get; set; }
 
         [Required]
-        public string Actioner { get; set; } = null!;
+        public List<Person> Actioners { get; set; } = new List<Person>();
+
 
         [Required]
         public string Status { get; set; } = null!;
