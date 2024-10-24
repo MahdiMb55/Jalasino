@@ -29,8 +29,8 @@ namespace Jalasino
         private void LoadMeetings(string searchQuery = "", DateTime? startDate = null, DateTime? endDate = null)
         {
             var meetings = _context.Meetings
-                .Include(m => m.People)
-                .AsQueryable();
+    .Include(m => m.People)
+    .AsQueryable();
 
             // Search by subject or description
             if (!string.IsNullOrEmpty(searchQuery))
@@ -51,13 +51,22 @@ namespace Jalasino
             // Pagination
             _totalPages = (int)Math.Ceiling(meetings.Count() / (double)PageSize);
             var pagedMeetings = meetings
-                .OrderBy(m => m.Date) // You can change the sorting logic if needed
+                .OrderBy(m => m.Date)
                 .Skip((PageSize * (_currentPage - 1)))
                 .Take(PageSize)
+                .Select(m => new
+                {
+                    m.Id,
+                    m.Subject,
+                    m.Date,
+                    m.Description,
+                    Participants = string.Join(", ", m.People.Select(p => p.Name)) // Concatenate participant names
+                })
                 .ToList();
 
-            // Bind to DataGridView
+            // Bind to DataGridView directly
             dataGridViewMeetings.DataSource = pagedMeetings;
+
             UpdatePaginationControls();
         }
 
@@ -100,8 +109,8 @@ namespace Jalasino
                 var editMenuItem = new ToolStripMenuItem("Edit");
                 var deleteMenuItem = new ToolStripMenuItem("Delete");
 
-                editMenuItem.Click += (s, ea) => EditMeeting((Meeting)dataGridViewMeetings.SelectedRows[0].DataBoundItem);
-                deleteMenuItem.Click += (s, ea) => DeleteMeeting((Meeting)dataGridViewMeetings.SelectedRows[0].DataBoundItem);
+                editMenuItem.Click += (s, ea) => EditMeeting(_context.Meetings.Where(m => m.Id == (int)dataGridViewMeetings.SelectedRows[0].Cells["Id"].Value).First());
+                deleteMenuItem.Click += (s, ea) => DeleteMeeting(_context.Meetings.Where(m => m.Id == (int)dataGridViewMeetings.SelectedRows[0].Cells["Id"].Value).First());
 
                 contextMenu.Items.AddRange(new ToolStripItem[] { editMenuItem, deleteMenuItem });
                 contextMenu.Show(dataGridViewMeetings, MousePosition.X-600,MousePosition.Y-300 );

@@ -65,5 +65,10 @@ namespace Jalasino
         {
             ShowPage(mainPage);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowPage(createForm);
+        }
     }
 }

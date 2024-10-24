@@ -51,6 +51,17 @@ namespace Jalasino
             MessageBox.Show("Meeting created successfully!");
             ClearForm();
 
+            DialogResult ds = MessageBox.Show("آیا میخواهید برای این جلسه مصوبات اضافه کنید ؟","مصوبات",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (ds==DialogResult.Yes)
+            {
+                using (var addapproval = new AddApprovalForm())
+                {
+                    if (addapproval.ShowDialog() == DialogResult.OK)
+                    {
+                        //LoadLocations(); // Refresh the location list after adding
+                    }
+                }
+            }
         }
 
         private void ClearForm()
@@ -62,7 +73,6 @@ namespace Jalasino
 
         private void CreateForm_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

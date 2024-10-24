@@ -11,6 +11,7 @@
         private void InitializeComponent()
         {
             this.sideMenuPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnMainPage = new System.Windows.Forms.Button();
             this.btnCreateForm = new System.Windows.Forms.Button();
             this.btnListMeetings = new System.Windows.Forms.Button();
@@ -21,6 +22,7 @@
             // sideMenuPanel
             // 
             this.sideMenuPanel.BackColor = System.Drawing.Color.LightGray;
+            this.sideMenuPanel.Controls.Add(this.button1);
             this.sideMenuPanel.Controls.Add(this.btnMainPage);
             this.sideMenuPanel.Controls.Add(this.btnCreateForm);
             this.sideMenuPanel.Controls.Add(this.btnListMeetings);
@@ -29,6 +31,16 @@
             this.sideMenuPanel.Name = "sideMenuPanel";
             this.sideMenuPanel.Size = new System.Drawing.Size(200, 600);
             this.sideMenuPanel.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.Location = new System.Drawing.Point(0, 138);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 46);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "افزودن جلسه";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnMainPage
             // 
@@ -81,5 +93,7 @@
             this.ResumeLayout(false);
 
         }
+
+        private Button button1;
     }
 }

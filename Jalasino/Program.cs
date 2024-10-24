@@ -12,6 +12,10 @@ namespace Jalasino
         {
             DatabaseFacade facade = new DatabaseFacade(new DataContex());
             facade.EnsureCreated();
+            using (var context = new DataContex())
+            {
+                DataSeeder.Seed(context);
+            }
             ApplicationConfiguration.Initialize();
             Application.Run(new MainForm());
         }

@@ -22,28 +22,28 @@
             // 
             // txtMeetingTitle
             // 
-            this.txtMeetingTitle.Location = new System.Drawing.Point(50, 20);
+            this.txtMeetingTitle.Location = new System.Drawing.Point(52, 22);
             this.txtMeetingTitle.Name = "txtMeetingTitle";
             this.txtMeetingTitle.PlaceholderText = "عنوان جلسه را وارد کنید";
             this.txtMeetingTitle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtMeetingTitle.Size = new System.Drawing.Size(363, 27);
+            this.txtMeetingTitle.Size = new System.Drawing.Size(513, 27);
             this.txtMeetingTitle.TabIndex = 0;
             // 
             // txtMeetingDescription
             // 
-            this.txtMeetingDescription.Location = new System.Drawing.Point(50, 306);
+            this.txtMeetingDescription.Location = new System.Drawing.Point(52, 308);
             this.txtMeetingDescription.Name = "txtMeetingDescription";
             this.txtMeetingDescription.PlaceholderText = "توضیحات جلسه را وارد کنید";
             this.txtMeetingDescription.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtMeetingDescription.Size = new System.Drawing.Size(363, 27);
+            this.txtMeetingDescription.Size = new System.Drawing.Size(513, 27);
             this.txtMeetingDescription.TabIndex = 2;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(50, 348);
+            this.btnSubmit.Location = new System.Drawing.Point(52, 363);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnSubmit.Size = new System.Drawing.Size(75, 40);
+            this.btnSubmit.Size = new System.Drawing.Size(123, 46);
             this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "ثبت";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -111,7 +111,7 @@
             this.dtpickerMeetingDate.DropDownClosedWhenSelectedDateChanged = false;
             this.dtpickerMeetingDate.Format = BehComponents.DateTimePickerX.FormatDate.Long;
             this.dtpickerMeetingDate.Format4Binding = "yyyy/MM/dd";
-            this.dtpickerMeetingDate.Location = new System.Drawing.Point(163, 68);
+            this.dtpickerMeetingDate.Location = new System.Drawing.Point(315, 70);
             this.dtpickerMeetingDate.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.dtpickerMeetingDate.Name = "dtpickerMeetingDate";
             this.dtpickerMeetingDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -125,7 +125,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(483, 23);
+            this.label1.Location = new System.Drawing.Point(635, 25);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(87, 20);
@@ -135,7 +135,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(489, 78);
+            this.label2.Location = new System.Drawing.Point(641, 80);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(81, 20);
@@ -146,7 +146,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(494, 309);
+            this.label3.Location = new System.Drawing.Point(646, 311);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(76, 20);
@@ -156,17 +156,19 @@
             // 
             // chkboxlstPeople
             // 
+            this.chkboxlstPeople.CheckOnClick = true;
             this.chkboxlstPeople.FormattingEnabled = true;
-            this.chkboxlstPeople.Location = new System.Drawing.Point(50, 132);
+            this.chkboxlstPeople.Location = new System.Drawing.Point(52, 134);
             this.chkboxlstPeople.Name = "chkboxlstPeople";
             this.chkboxlstPeople.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chkboxlstPeople.Size = new System.Drawing.Size(363, 158);
+            this.chkboxlstPeople.Size = new System.Drawing.Size(513, 158);
             this.chkboxlstPeople.TabIndex = 6;
+            this.chkboxlstPeople.Tag = "";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(435, 132);
+            this.label4.Location = new System.Drawing.Point(587, 134);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label4.Size = new System.Drawing.Size(135, 20);
@@ -176,7 +178,7 @@
             // 
             // CreateForm
             // 
-            this.ClientSize = new System.Drawing.Size(600, 400);
+            this.ClientSize = new System.Drawing.Size(782, 435);
             this.Controls.Add(this.chkboxlstPeople);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
@@ -189,6 +191,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateForm";
             this.Text = "ثبت جلسه جدید";
+            this.Load += new System.EventHandler(this.CreateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
