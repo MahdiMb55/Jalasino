@@ -13,7 +13,7 @@ namespace Jalasino
             DatabaseFacade facade = new DatabaseFacade(new DataContex());
             facade.EnsureCreated();
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
 
     }
