@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Jalasino.Models
 {
@@ -19,7 +20,10 @@ namespace Jalasino.Models
         
         public DateTime Date { get; set; }
 
-        public List<Person> People { get; set; } = new List<Person>();
+        public virtual ICollection<MeetingPerson> MeetingPersons { get; set; } = new HashSet<MeetingPerson>();
+
+
+        public virtual ICollection<Approval> Approvals { get; set; } = new HashSet<Approval>();
 
     }
 }

@@ -6,6 +6,6 @@
         Confirmed,
         Registered,
         Complete,
-        InComplete,
+        InComplete
     }
 }

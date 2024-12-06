@@ -14,10 +14,53 @@ namespace Jalasino
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Approval> Approvals { get; set; }
+        public DbSet<MeetingPerson> MeetingPersons { get; set; }
+        public DbSet<ApprovalPerson> ApprovalPersons { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
+            // Configuring one-to-many relationship
+            modelBuilder.Entity<Approval>()
+                .HasOne(a => a.Meeting)
+                .WithMany(m => m.Approvals)
+                .HasForeignKey(a => a.MeetingId); // Foreign key property
+
+
+            modelBuilder.Entity<MeetingPerson>()
+            .HasKey(mp => new { mp.MeetingId, mp.PersonId }); // Composite key
+
+            modelBuilder.Entity<MeetingPerson>()
+                .HasOne(mp => mp.Meeting)
+                .WithMany(m => m.MeetingPersons)
+                .HasForeignKey(mp => mp.MeetingId);
+
+            modelBuilder.Entity<MeetingPerson>()
+                .HasOne(mp => mp.Person)
+                .WithMany(p => p.MeetingPersons)
+                .HasForeignKey(mp => mp.PersonId);
+
+
+            // Meeting Approval & person many to many
+            modelBuilder.Entity<ApprovalPerson>()
+            .HasKey(mp => new { mp.ApprovalId, mp.PersonId }); // Composite key
+
+            modelBuilder.Entity<ApprovalPerson>()
+                .HasOne(mp => mp.Approval)
+                .WithMany(m => m.ApprovalPersons)
+                .HasForeignKey(mp => mp.ApprovalId);
+
+            modelBuilder.Entity<ApprovalPerson>()
+                .HasOne(mp => mp.Person)
+                .WithMany(p => p.ApprovalPersons)
+                .HasForeignKey(mp => mp.PersonId);
+
+
+
+
 
             // Add seed data
             //modelBuilder.Entity<Person>().ToTable("People").HasData(

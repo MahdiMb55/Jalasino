@@ -19,12 +19,18 @@ namespace Jalasino.Models
         [Required]
         public DateTime Date { get; set; }
 
-        [Required]
-        public List<Person> Actioners { get; set; } = new List<Person>();
-
 
         [Required]
-        public string Status { get; set; } = null!;
+        public ApprovalStatus Status { get; set; } = ApprovalStatus.None;
+        
+        // Foreign key to Meeting
+        public int MeetingId { get; set; }
+
+        // Navigation property back to Meeting
+        public virtual Meeting Meeting { get; set; } = null!;
+
+        public virtual ICollection<ApprovalPerson> ApprovalPersons { get; set; } = new HashSet<ApprovalPerson>();
+
 
     }
 }

@@ -10,13 +10,13 @@ namespace Jalasino
         private MainPage mainPage;
         private CreateForm createForm;
         private AllMeetingList allMeetingList;
-        private MeetingsListPage meetingsListPage;
+        private ApprovalsListPage approvalslistpage;
         public MainForm()
         {
             InitializeComponent();
             _context = new DataContex();
             mainPage = new MainPage();
-            meetingsListPage = new MeetingsListPage();  
+            approvalslistpage = new ApprovalsListPage();  
             createForm = new CreateForm();
             allMeetingList = new AllMeetingList();
             LoadPendingMeetings();
@@ -46,7 +46,7 @@ namespace Jalasino
 
         private void btnListMeetings_Click(object sender, EventArgs e)
         {
-            ShowPage(meetingsListPage);
+            ShowPage(approvalslistpage);
         }
 
         // Method to dynamically load and show pages in contentPanel
@@ -63,7 +63,7 @@ namespace Jalasino
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ShowPage(mainPage);
+            ShowPage(approvalslistpage);
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -40,10 +40,10 @@ namespace Jalasino
                     Subject = "Project Kickoff",
                     Date = new DateTime(2024, 10, 30, 10, 0, 0),
                     Description = "Initial meeting to discuss the project kickoff.",
-                    People = new List<Person>
+                    MeetingPersons = new List<MeetingPerson>
                     {
-                        context.People.First(p => p.Name == "Alice Johnson"),
-                        context.People.First(p => p.Name == "Bob Smith")
+                        new MeetingPerson{ PersonId=context.People.First(p => p.Name == "Alice Johnson").Id} ,
+                        new MeetingPerson{ PersonId=context.People.First(p => p.Name == "Bob Smith").Id} ,
                     }
                 },
                 new Meeting
@@ -51,10 +51,10 @@ namespace Jalasino
                     Subject = "Weekly Sync",
                     Date = new DateTime(2024, 11, 6, 15, 0, 0),
                     Description = "Weekly sync-up to discuss project progress.",
-                    People = new List<Person>
+                    MeetingPersons = new List<MeetingPerson>
                     {
-                        context.People.First(p => p.Name == "Bob Smith"),
-                        context.People.First(p => p.Name == "Charlie Brown")
+                        new MeetingPerson{ PersonId=context.People.First(p => p.Name == "Bob Smith").Id} ,
+                        new MeetingPerson{ PersonId=context.People.First(p => p.Name == "Charlie Brown").Id} ,
                     }
                 },
                 new Meeting
@@ -62,10 +62,10 @@ namespace Jalasino
                     Subject = "Budget Review",
                     Date = new DateTime(2024, 11, 13, 9, 0, 0),
                     Description = "Review the budget allocation for the next quarter.",
-                    People = new List<Person>
+                    MeetingPersons = new List<MeetingPerson>
                     {
-                        context.People.First(p => p.Name == "Alice Johnson"),
-                        context.People.First(p => p.Name == "Diana Prince")
+                        new MeetingPerson{ PersonId=context.People.First(p => p.Name == "Alice Johnson").Id} ,
+                        new MeetingPerson{ PersonId=context.People.First(p => p.Name == "Diana Prince").Id}
                     }
                 }
             };

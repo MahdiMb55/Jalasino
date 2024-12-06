@@ -32,7 +32,7 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.btncancel = new System.Windows.Forms.Button();
             this.dateTimePickerDate = new BehComponents.DateTimePickerX();
-            this.textBoxStatus = new System.Windows.Forms.ComboBox();
+            this.ComboStatus = new System.Windows.Forms.ComboBox();
             this.chklstboxActioners = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
@@ -182,13 +182,13 @@
             this.dateTimePickerDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.dateTimePickerDate.TextWhenClearButtonClicked = "";
             // 
-            // textBoxStatus
+            // ComboStatus
             // 
-            this.textBoxStatus.FormattingEnabled = true;
-            this.textBoxStatus.Location = new System.Drawing.Point(68, 305);
-            this.textBoxStatus.Name = "textBoxStatus";
-            this.textBoxStatus.Size = new System.Drawing.Size(251, 28);
-            this.textBoxStatus.TabIndex = 10;
+            this.ComboStatus.FormattingEnabled = true;
+            this.ComboStatus.Location = new System.Drawing.Point(68, 305);
+            this.ComboStatus.Name = "ComboStatus";
+            this.ComboStatus.Size = new System.Drawing.Size(251, 28);
+            this.ComboStatus.TabIndex = 10;
             // 
             // chklstboxActioners
             // 
@@ -207,7 +207,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 422);
             this.Controls.Add(this.chklstboxActioners);
-            this.Controls.Add(this.textBoxStatus);
+            this.Controls.Add(this.ComboStatus);
             this.Controls.Add(this.dateTimePickerDate);
             this.Controls.Add(this.btncancel);
             this.Controls.Add(this.buttonSave);
@@ -220,6 +220,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddApprovalForm";
             this.Text = "Add Approval";
+            this.Load += new System.EventHandler(this.AddApprovalForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,7 +228,7 @@
 
         private Button btncancel;
         private BehComponents.DateTimePickerX dateTimePickerDate;
-        private ComboBox textBoxStatus;
+        private ComboBox ComboStatus;
         private CheckedListBox chklstboxActioners;
     }
 }

@@ -29,7 +29,7 @@ namespace Jalasino
         private void LoadMeetings(string searchQuery = "", DateTime? startDate = null, DateTime? endDate = null)
         {
             var meetings = _context.Meetings
-    .Include(m => m.People)
+    .Include(m => m.MeetingPersons)
     .AsQueryable();
 
             // Search by subject or description
@@ -60,7 +60,7 @@ namespace Jalasino
                     m.Subject,
                     m.Date,
                     m.Description,
-                    Participants = string.Join(", ", m.People.Select(p => p.Name)) // Concatenate participant names
+                    Participants = string.Join(", ", m.MeetingPersons.Select(p => p.Person.Name)) // Concatenate participant names
                 })
                 .ToList();
 

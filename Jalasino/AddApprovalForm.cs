@@ -9,9 +9,11 @@ namespace Jalasino
         public AddApprovalForm()
         {
             InitializeComponent();
+            LoadApprovalStatus();
             LoadPeople();
-        }
 
+        }
+        public Meeting meeting;
         private List<Person> _people;
         private void LoadPeople()
         {
@@ -32,7 +34,7 @@ namespace Jalasino
             // Validation
             if (string.IsNullOrWhiteSpace(textBoxSubject.Text) ||
                 chklstboxActioners.CheckedItems.Count == 0 ||
-                string.IsNullOrWhiteSpace(textBoxStatus.Text))
+                string.IsNullOrWhiteSpace(ComboStatus.Text))
             {
                 MessageBox.Show("Please fill in all required fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -43,13 +45,14 @@ namespace Jalasino
             {
                 Subject = textBoxSubject.Text,
                 Date = dateTimePickerDate.SelectedDateInDateTime,
-                Actioners = new List<Person>(),
-                Status = textBoxStatus.Text
+                ApprovalPersons = new List<ApprovalPerson>(),
+                Status = (ApprovalStatus)ComboStatus.SelectedIndex,
+                MeetingId = meeting.Id
             };
             // Add selected participants to the meeting
             foreach (Person person in chklstboxActioners.CheckedItems)
             {
-                newApproval.Actioners.Add(person);
+                newApproval.ApprovalPersons.Add(new ApprovalPerson { PersonId= person.Id} );
             }
 
 
@@ -63,14 +66,27 @@ namespace Jalasino
             // Confirmation message
             MessageBox.Show("Approval added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Close the form
-            DialogResult = DialogResult.OK;
-            this.Close();
         }
 
         private void btncancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void AddApprovalForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadApprovalStatus()
+        {
+            ComboStatus.Items.Add("تعریف نشده");
+            ComboStatus.Items.Add("تایید شده");
+            ComboStatus.Items.Add("ثبت شده");
+            ComboStatus.Items.Add("انجام شده");
+            ComboStatus.Items.Add("انجام نشده");
+            ComboStatus.SelectedIndex = 2;
+
         }
     }
 }

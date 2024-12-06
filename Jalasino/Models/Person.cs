@@ -14,6 +14,10 @@ namespace Jalasino.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public virtual ICollection<ApprovalPerson> ApprovalPersons { get; set; } = new HashSet<ApprovalPerson>();
+        public virtual ICollection<MeetingPerson> MeetingPersons { get; set; } = new HashSet<MeetingPerson>();
+
+
         public override string ToString()
         {
             return Name;

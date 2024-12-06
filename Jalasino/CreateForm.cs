@@ -33,13 +33,23 @@ namespace Jalasino
                 Subject = txtMeetingTitle.Text,
                 Date = dtpickerMeetingDate.SelectedDateInDateTime,
                 Description = txtMeetingDescription.Text,
-                People = new List<Person>()
+                MeetingPersons = new List<MeetingPerson>()
             };
-
             // Add selected participants to the meeting
             foreach (Person person in chkboxlstPeople.CheckedItems)
             {
-                meeting.People.Add(person);
+                using (var context = new DataContex())
+                {
+                    var existingPerson = context.People.Find(person.Id);
+                    if (existingPerson != null)
+                    {
+                        meeting.MeetingPersons.Add(new MeetingPerson { PersonId= existingPerson.Id } ); // Link existing person
+                    }
+                    else
+                    {
+                        MessageBox.Show("not !!");
+                    }
+                }
             }
 
             using (var context = new DataContex())
@@ -56,6 +66,7 @@ namespace Jalasino
             {
                 using (var addapproval = new AddApprovalForm())
                 {
+                    addapproval.meeting = meeting;
                     if (addapproval.ShowDialog() == DialogResult.OK)
                     {
                         //LoadLocations(); // Refresh the location list after adding
