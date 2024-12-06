@@ -1,4 +1,5 @@
-﻿using Jalasino.Models;
+﻿using BehComponents;
+using Jalasino.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -113,7 +114,7 @@ namespace Jalasino
                 deleteMenuItem.Click += (s, ea) => DeleteMeeting(_context.Meetings.Where(m => m.Id == (int)dataGridViewMeetings.SelectedRows[0].Cells["Id"].Value).First());
 
                 contextMenu.Items.AddRange(new ToolStripItem[] { editMenuItem, deleteMenuItem });
-                contextMenu.Show(dataGridViewMeetings, MousePosition.X-600,MousePosition.Y-300 );
+                contextMenu.Show(dataGridViewMeetings, dataGridViewMeetings.PointToClient(Cursor.Position));
             }
         }
 
