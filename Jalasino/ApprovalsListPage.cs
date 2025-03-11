@@ -1,5 +1,6 @@
 ﻿using Jalasino.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace Jalasino
 {
@@ -20,8 +21,19 @@ namespace Jalasino
             object approvals = GetApprovals();
             dataGridViewAllApprovals.DataSource = approvals;
             dataGridViewAllApprovals.Columns["Id"].Visible = false; // Hide Id column
-        }
 
+            dataGridViewAllApprovals.Columns["meeting"].HeaderText = "موضوع جلسه";
+            dataGridViewAllApprovals.Columns["Subject"].HeaderText = "موضوع مصوبه";
+            dataGridViewAllApprovals.Columns["Date"].HeaderText = "تاریخ";
+            dataGridViewAllApprovals.Columns["Persons"].HeaderText = "افراد";
+            dataGridViewAllApprovals.Columns["Status"].HeaderText = "وضعیت";
+
+        }
+        private string ConvertToShamsi(DateTime date)
+        {
+            PersianCalendar pc = new PersianCalendar();
+            return $"{pc.GetYear(date)}/{pc.GetMonth(date):00}/{pc.GetDayOfMonth(date):00}";
+        }
         private object GetApprovals()
         {
             var last20Approvals = _context.Approvals
@@ -30,20 +42,19 @@ namespace Jalasino
             .Include(a => a.Meeting)
             .OrderByDescending(a => a.Date)
             .Take(pageSize)
+            .AsEnumerable() // انتقال داده به حافظه برای اجرای توابع C#
             .Select(a=>new
             {
                 a.Id,
                 meeting = a.Meeting.Subject,
                 a.Subject,
-                a.Date,
+                Date = ConvertToShamsi(a.Date),
                 Persons = string.Join(", ", a.ApprovalPersons.Select(ap => ap.Person.Name)),
-                Status = a.Status.ToString()
+                Status = a.Status.GetDescription()
             })
             .ToList();
             return last20Approvals;
         }
-
-
 
         private void MeetingsListPage_Load(object sender, EventArgs e)
         {

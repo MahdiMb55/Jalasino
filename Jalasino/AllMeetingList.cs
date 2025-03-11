@@ -120,7 +120,7 @@ namespace Jalasino
 
         private void EditMeeting(Meeting meeting)
         {
-            using (var editForm = new EditMeetingForm(meeting))
+            using (var editForm = new EditMeetingForm1(meeting))
             {
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {

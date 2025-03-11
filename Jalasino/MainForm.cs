@@ -36,16 +36,22 @@ namespace Jalasino
         // Method to handle navigation to pages
         private void btnMainPage_Click(object sender, EventArgs e)
         {
+            mainPage.Dispose();
+            mainPage = new MainPage();
             ShowPage(mainPage);
         }
 
         private void btnCreateForm_Click(object sender, EventArgs e)
         {
+            allMeetingList.Dispose();
+            allMeetingList = new AllMeetingList();
             ShowPage(allMeetingList);
         }
 
         private void btnListMeetings_Click(object sender, EventArgs e)
         {
+            approvalslistpage.Dispose();
+            approvalslistpage = new ApprovalsListPage();
             ShowPage(approvalslistpage);
         }
 
@@ -63,12 +69,22 @@ namespace Jalasino
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            approvalslistpage.Dispose();
+            approvalslistpage = new ApprovalsListPage();
             ShowPage(approvalslistpage);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            createForm.Dispose();
+            createForm = new CreateForm();
             ShowPage(createForm);
+        }
+
+        private void btn_add_person_Click(object sender, EventArgs e)
+        {
+            AddPersonForm addper = new AddPersonForm();
+            addper.ShowDialog();
         }
     }
 }

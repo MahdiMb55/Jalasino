@@ -16,6 +16,7 @@
             this.dataGridViewAllApprovals.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridViewAllApprovals.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewAllApprovals.Name = "dataGridViewAllApprovals";
+            this.dataGridViewAllApprovals.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dataGridViewAllApprovals.RowHeadersWidth = 51;
             this.dataGridViewAllApprovals.Size = new System.Drawing.Size(583, 388);
             this.dataGridViewAllApprovals.TabIndex = 0;

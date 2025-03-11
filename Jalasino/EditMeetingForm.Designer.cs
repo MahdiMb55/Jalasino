@@ -20,34 +20,30 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
-
             // 
             // textBoxSubject
             // 
             this.textBoxSubject.Location = new System.Drawing.Point(12, 12);
             this.textBoxSubject.Name = "textBoxSubject";
-            this.textBoxSubject.Size = new System.Drawing.Size(300, 20);
-            this.textBoxSubject.TabIndex = 0;
             this.textBoxSubject.PlaceholderText = "Subject";
-
+            this.textBoxSubject.Size = new System.Drawing.Size(300, 27);
+            this.textBoxSubject.TabIndex = 0;
             // 
             // dateTimePickerDate
             // 
             this.dateTimePickerDate.Location = new System.Drawing.Point(12, 38);
             this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.Size = new System.Drawing.Size(300, 20);
+            this.dateTimePickerDate.Size = new System.Drawing.Size(300, 27);
             this.dateTimePickerDate.TabIndex = 1;
-
             // 
             // textBoxDescription
             // 
             this.textBoxDescription.Location = new System.Drawing.Point(12, 64);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.PlaceholderText = "Description";
             this.textBoxDescription.Size = new System.Drawing.Size(300, 100);
             this.textBoxDescription.TabIndex = 2;
-            this.textBoxDescription.PlaceholderText = "Description";
-
             // 
             // buttonSave
             // 
@@ -58,7 +54,6 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-
             // 
             // EditMeetingForm
             // 
@@ -69,8 +64,10 @@
             this.Controls.Add(this.textBoxSubject);
             this.Name = "EditMeetingForm";
             this.Text = "Edit Meeting";
+            this.Load += new System.EventHandler(this.EditMeetingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.TextBox textBoxSubject;

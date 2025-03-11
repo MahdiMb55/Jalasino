@@ -48,5 +48,10 @@ namespace Jalasino
             this.DialogResult = DialogResult.OK; // Indicate that the edit was successful
             this.Close();
         }
+
+        private void EditMeetingForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

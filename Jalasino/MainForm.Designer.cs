@@ -16,12 +16,14 @@
             this.btnCreateForm = new System.Windows.Forms.Button();
             this.btnListMeetings = new System.Windows.Forms.Button();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.btn_add_person = new System.Windows.Forms.Button();
             this.sideMenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // sideMenuPanel
             // 
             this.sideMenuPanel.BackColor = System.Drawing.Color.LightGray;
+            this.sideMenuPanel.Controls.Add(this.btn_add_person);
             this.sideMenuPanel.Controls.Add(this.button1);
             this.sideMenuPanel.Controls.Add(this.btnMainPage);
             this.sideMenuPanel.Controls.Add(this.btnCreateForm);
@@ -80,6 +82,16 @@
             this.contentPanel.Size = new System.Drawing.Size(799, 600);
             this.contentPanel.TabIndex = 0;
             // 
+            // btn_add_person
+            // 
+            this.btn_add_person.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_add_person.Location = new System.Drawing.Point(0, 184);
+            this.btn_add_person.Name = "btn_add_person";
+            this.btn_add_person.Size = new System.Drawing.Size(200, 46);
+            this.btn_add_person.TabIndex = 4;
+            this.btn_add_person.Text = "افزودن نفر به لیست";
+            this.btn_add_person.Click += new System.EventHandler(this.btn_add_person_Click);
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(999, 600);
@@ -95,5 +107,6 @@
         }
 
         private Button button1;
+        private Button btn_add_person;
     }
 }

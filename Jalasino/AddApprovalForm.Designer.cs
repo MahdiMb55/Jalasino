@@ -53,7 +53,7 @@
             this.textBoxSubject.Name = "textBoxSubject";
             this.textBoxSubject.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.textBoxSubject.Size = new System.Drawing.Size(250, 27);
-            this.textBoxSubject.TabIndex = 1;
+            this.textBoxSubject.TabIndex = 0;
             // 
             // labelDate
             // 
@@ -92,7 +92,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.buttonSave.Size = new System.Drawing.Size(86, 31);
-            this.buttonSave.TabIndex = 8;
+            this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -104,7 +104,7 @@
             this.btncancel.Name = "btncancel";
             this.btncancel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btncancel.Size = new System.Drawing.Size(86, 31);
-            this.btncancel.TabIndex = 8;
+            this.btncancel.TabIndex = 5;
             this.btncancel.Text = "انصراف";
             this.btncancel.UseVisualStyleBackColor = true;
             this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
@@ -178,7 +178,7 @@
             this.dateTimePickerDate.RightToLeftLayout = true;
             this.dateTimePickerDate.ShowClearButton = false;
             this.dateTimePickerDate.Size = new System.Drawing.Size(250, 37);
-            this.dateTimePickerDate.TabIndex = 9;
+            this.dateTimePickerDate.TabIndex = 1;
             this.dateTimePickerDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.dateTimePickerDate.TextWhenClearButtonClicked = "";
             // 
@@ -188,7 +188,7 @@
             this.ComboStatus.Location = new System.Drawing.Point(68, 305);
             this.ComboStatus.Name = "ComboStatus";
             this.ComboStatus.Size = new System.Drawing.Size(251, 28);
-            this.ComboStatus.TabIndex = 10;
+            this.ComboStatus.TabIndex = 3;
             // 
             // chklstboxActioners
             // 
@@ -198,7 +198,7 @@
             this.chklstboxActioners.Name = "chklstboxActioners";
             this.chklstboxActioners.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chklstboxActioners.Size = new System.Drawing.Size(293, 136);
-            this.chklstboxActioners.TabIndex = 11;
+            this.chklstboxActioners.TabIndex = 2;
             this.chklstboxActioners.Tag = "";
             // 
             // AddApprovalForm
